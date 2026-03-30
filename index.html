@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Sprint — BridgePoint AI</title>
+<meta name="description" content="A structured half-day session where senior expertise meets AI execution. You leave with a deployed website, pitch deck, financial model, or GTM strategy. Built live. In one session.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0c10;
+  --surface: #111318;
+  --surface2: #16191f;
+  --border: #1e2229;
+  --text: #f0f2f5;
+  --text-body: #c8cdd8;
+  --text-muted: #8a8f9e;
+  --gold: #c9a84c;
+  --gold-light: #e8c96a;
+  --gold-bg: rgba(201,168,76,0.08);
+  --gold-border: rgba(201,168,76,0.2);
+  --green: #16a34a;
+  --green-bg: rgba(22,163,74,0.08);
+  --white: #ffffff;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text-body);
+  line-height: 1.6;
+  font-size: 16px;
+}
+a { color: inherit; text-decoration: none; }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,12,16,0.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  height: 64px; display: flex; align-items: center;
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 2rem;
+}
+.nav-brand { display: flex; align-items: center; gap: 10px; }
+.nav-logo {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 15px; font-weight: 700; color: var(--text);
+  letter-spacing: -0.3px;
+}
+.nav-logo span { color: var(--gold); }
+.nav-back {
+  font-size: 12px; color: var(--text-muted); font-weight: 500;
+  border: 1px solid var(--border); padding: 6px 14px; border-radius: 4px;
+  transition: all 0.15s;
+}
+.nav-back:hover { color: var(--text); border-color: var(--gold-border); }
+.nav-cta {
+  background: var(--gold); color: #0a0c10; font-weight: 700;
+  font-size: 13px; padding: 8px 18px; border-radius: 4px;
+  transition: background 0.15s; letter-spacing: 0.02em;
+}
+.nav-cta:hover { background: var(--gold-light); }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+
+/* HERO */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 120px 0 80px; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 800px; height: 600px;
+  background: radial-gradient(ellipse at center top, rgba(201,168,76,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold-bg); border: 1px solid var(--gold-border);
+  color: var(--gold); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 6px 14px; border-radius: 4px; margin-bottom: 2rem;
+}
+.hero-label::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+.hero h1 {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 700; color: var(--text);
+  letter-spacing: -0.03em; line-height: 1.05;
+  margin-bottom: 1.5rem;
+}
+.hero h1 em { color: var(--gold); font-style: normal; }
+.hero-sub {
+  font-size: 1.2rem; color: var(--text-muted); max-width: 580px;
+  line-height: 1.7; margin-bottom: 2.5rem;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-bottom: 4rem; }
+.btn-primary {
+  background: var(--gold); color: #0a0c10; font-weight: 700;
+  font-size: 15px; padding: 14px 28px; border-radius: 5px;
+  letter-spacing: 0.02em; transition: background 0.15s; display: inline-block;
+}
+.btn-primary:hover { background: var(--gold-light); }
+.btn-secondary {
+  color: var(--text-muted); font-size: 14px; font-weight: 500;
+  border: 1px solid var(--border); padding: 14px 24px; border-radius: 5px;
+  transition: all 0.15s; display: inline-block;
+}
+.btn-secondary:hover { color: var(--text); border-color: var(--gold-border); }
+.hero-stats {
+  display: flex; gap: 2.5rem; flex-wrap: wrap;
+  border-top: 1px solid var(--border); padding-top: 2.5rem;
+}
+.hero-stat .stat-val {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 2rem; font-weight: 700; color: var(--text);
+  letter-spacing: -0.02em;
+}
+.hero-stat .stat-lbl { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+/* HOW IT WORKS */
+.section { padding: 6rem 0; }
+.section-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--gold); margin-bottom: 1rem;
+}
+.section h2 {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 600;
+  color: var(--text); letter-spacing: -0.02em; margin-bottom: 1rem;
+}
+.section-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 560px; line-height: 1.7; margin-bottom: 3.5rem; }
+
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.step { background: var(--surface); padding: 2rem 1.5rem; }
+.step-num {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 2.5rem; font-weight: 700; color: var(--gold);
+  opacity: 0.4; line-height: 1; margin-bottom: 1rem;
+}
+.step h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; }
+.step p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+/* OUTPUTS */
+.outputs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 2rem; }
+.output-card { background: var(--surface); padding: 2rem; }
+.output-icon { width: 32px; height: 32px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 1.2rem; }
+.output-card h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; }
+.output-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+/* DELIVERABLES */
+.deliverables { background: var(--surface); }
+.deliverables-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.deliverable { background: var(--surface2); padding: 2.5rem 2rem; }
+.del-num {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 3rem; font-weight: 700; color: var(--gold);
+  opacity: 0.2; line-height: 1; margin-bottom: 1rem;
+}
+.deliverable h3 { font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 0.6rem; }
+.deliverable p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
+
+/* CASE STUDY */
+.case-study-section { background: var(--surface); }
+.case-study-card {
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 8px; padding: 2.5rem; max-width: 800px;
+  border-left: 3px solid var(--gold);
+}
+.case-study-card .cs-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 1rem; }
+.case-study-card p { color: var(--text-body); line-height: 1.7; margin-bottom: 1rem; font-size: 1rem; }
+.cs-stats { display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+.cs-stat .cs-val { font-family: 'Instrument Sans', sans-serif; font-size: 1.8rem; font-weight: 700; color: var(--text); }
+.cs-stat .cs-lbl { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+/* PRICING */
+.pricing-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 3rem; max-width: 640px; margin: 0 auto;
+  text-align: center;
+}
+.pricing-card h3 { font-family: 'Instrument Sans', sans-serif; font-size: 1.6rem; font-weight: 600; color: var(--text); margin-bottom: 1rem; }
+.pricing-card p { color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+.pricing-pills { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.pill {
+  background: var(--gold-bg); border: 1px solid var(--gold-border);
+  color: var(--gold); font-size: 12px; font-weight: 600;
+  padding: 6px 14px; border-radius: 20px; letter-spacing: 0.02em;
+}
+
+/* CTA BAND */
+.cta-band { background: var(--gold); padding: 5rem 0; text-align: center; }
+.cta-band h2 {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700;
+  color: #0a0c10; letter-spacing: -0.02em; margin-bottom: 1rem;
+}
+.cta-band p { color: rgba(10,12,16,0.65); font-size: 1.05rem; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+.btn-dark {
+  background: #0a0c10; color: var(--gold); font-weight: 700;
+  font-size: 15px; padding: 14px 32px; border-radius: 5px;
+  letter-spacing: 0.02em; transition: background 0.15s; display: inline-block;
+}
+.btn-dark:hover { background: #1a1d24; }
+
+/* FOOTER */
+footer {
+  background: var(--surface); border-top: 1px solid var(--border);
+  padding: 2.5rem 0; text-align: center;
+}
+footer p { font-size: 12px; color: var(--text-muted); }
+footer a { color: var(--gold); }
+
+/* BRIDGE MOTIF */
+.bridge-motif-wrap { margin-bottom: 1.5rem; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .steps { grid-template-columns: 1fr 1fr; }
+  .outputs-grid { grid-template-columns: 1fr; }
+  .deliverables-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 2.4rem; }
+  .nav-back { display: none; }
+  .hero-stats { gap: 1.5rem; }
+  .cs-stats { gap: 1.5rem; }
+}
+@media (max-width: 480px) {
+  .steps { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; }
+  .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <div class="nav-logo">BRIDGE<span>POINT</span> AI <span style="color:var(--text-muted);font-weight:400;font-size:13px;margin-left:6px;">/ AI Sprint</span></div>
+    </div>
+    <div class="nav-right">
+      <a href="https://www.bridgepointai.io" class="nav-back">← Back to BridgePoint AI</a>
+      <a href="#book" class="nav-cta">Book a Sprint</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-label">Flagship Service</div>
+    <h1>The AI Sprint.<br><em>You leave with<br>something real.</em></h1>
+    <p class="hero-sub">Most companies spend months briefing agencies, waiting for deliverables, reviewing drafts. The AI Sprint compresses that into hours. Senior expertise co-directs AI in real time — you leave with a deployed asset, not a plan.</p>
+    <div class="hero-actions">
+      <a href="#book" class="btn-primary">Book an AI Sprint</a>
+      <a href="#how-it-works" class="btn-secondary">How it works ↓</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="stat-val">½ day</div><div class="stat-lbl">Single session</div></div>
+      <div class="hero-stat"><div class="stat-val">4</div><div class="stat-lbl">Guaranteed deliverables</div></div>
+      <div class="hero-stat"><div class="stat-val">Live</div><div class="stat-lbl">Deployed on the day</div></div>
+      <div class="hero-stat"><div class="stat-val">0</div><div class="stat-lbl">Agencies. No dev team.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="section" style="background:var(--surface);">
+  <div class="container">
+    <div class="section-label">The Process</div>
+    <h2>Four stages. One morning.</h2>
+    <p class="section-sub">Every AI Sprint follows the same structure — tight, fast, and focused on a deployed output at the end of the day.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Pre-Sprint Brief</h3>
+        <p>30-minute intake call. We align on the target output, gather raw materials, and configure the AI environment before the session begins.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Live Co-Direction</h3>
+        <p>Your senior team — up to 4 people — co-directs the AI build in real time. You set strategy. We handle execution. The AI moves at machine speed.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Iterate & Refine</h3>
+        <p>Real-time revisions as the output takes shape. Brand, tone, structure — changed instantly. No waiting for agency briefs or revision cycles.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Deploy & Hand Over</h3>
+        <p>Live URL, working product, or completed document — handed over before you leave the session. With full documentation and ownership.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE BUILD -->
+<section id="outputs" class="section">
+  <div class="container">
+    <div class="section-label">What We Build</div>
+    <h2>Any of these. In one session.</h2>
+    <p class="section-sub">The AI Sprint is format-agnostic. You define the output. We deploy it.</p>
+    <div class="outputs-grid">
+      <div class="output-card">
+        <svg class="output-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        <h3>Brand &amp; Website</h3>
+        <p>Full website design, build and deployment. Live URL, real content, production-quality. From blank canvas to live in under 4 hours.</p>
+      </div>
+      <div class="output-card">
+        <svg class="output-icon" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <h3>Commercial Strategy</h3>
+        <p>Go-to-market plans, competitive positioning and revenue model frameworks. Actionable, not theoretical. Board-ready on the day.</p>
+      </div>
+      <div class="output-card">
+        <svg class="output-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <h3>Pitch &amp; Investment Deck</h3>
+        <p>Investor-ready decks, financial models and data rooms — built with the rigour investors expect, in a fraction of the time.</p>
+      </div>
+      <div class="output-card">
+        <svg class="output-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <h3>Product Prototype</h3>
+        <p>Interactive proof of concept — a working tool, calculator, or platform demo — deployed and shareable by end of session.</p>
+      </div>
+      <div class="output-card">
+        <svg class="output-icon" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <h3>AI Business Case</h3>
+        <p>Data-backed analysis of where AI creates most value in your business. Prioritised opportunities ranked by impact and feasibility.</p>
+      </div>
+      <div class="output-card">
+        <svg class="output-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <h3>Team Alignment Workshop</h3>
+        <p>Strategic alignment session with your leadership team — co-directed with AI to produce a shared roadmap, not just slide decks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section class="section deliverables">
+  <div class="container">
+    <div class="section-label">Guaranteed Deliverables</div>
+    <h2>Four things. Every session.</h2>
+    <p class="section-sub">Regardless of what you're building, every AI Sprint produces these four outcomes.</p>
+    <div class="deliverables-grid">
+      <div class="deliverable">
+        <div class="del-num">01</div>
+        <h3>Deployed Asset</h3>
+        <p>A live, working output — website, deck, model, or tool — built and deployed in the session. Not a plan. Not a prototype. A thing that exists, that you own, that you can share the moment you walk out.</p>
+      </div>
+      <div class="deliverable">
+        <div class="del-num">02</div>
+        <h3>Commercial Clarity</h3>
+        <p>Prioritised AI opportunities in your business, ranked by impact and feasibility. No fluff — just a clear view of where technology creates real value and where it doesn't.</p>
+      </div>
+      <div class="deliverable">
+        <div class="del-num">03</div>
+        <h3>90-Day Roadmap</h3>
+        <p>A concrete plan for what to build next. Who owns what, how to measure success, and what the business case looks like. Board-ready and investor-aware.</p>
+      </div>
+      <div class="deliverable">
+        <div class="del-num">04</div>
+        <h3>Team Alignment</h3>
+        <p>Your senior team co-directed the build. They leave aligned on strategy, having made decisions in real time — not received a briefing document two weeks later.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="section case-study-section">
+  <div class="container">
+    <div class="section-label">Case Study</div>
+    <h2>Proof it works.</h2>
+    <p class="section-sub" style="margin-bottom:2.5rem;">Real output. One session.</p>
+    <div class="case-study-card">
+      <div class="cs-label">Net Zero Technology Company — March 2026</div>
+      <p>A four-person senior team co-directed BridgePoint AI through a structured half-day build session. The brief: a full commercial website for a Net Zero technology platform, from blank canvas to live URL.</p>
+      <p>Domain expertise shaped the messaging in real time. Commercial instincts drove the positioning. The AI executed instantly — no briefing documents, no revision cycles, no agency handoffs. The result was deployed and live before the session ended.</p>
+      <div class="cs-stats">
+        <div class="cs-stat"><div class="cs-val">4 hrs</div><div class="cs-lbl">From brief to live URL</div></div>
+        <div class="cs-stat"><div class="cs-val">0</div><div class="cs-lbl">Agency or dev cost</div></div>
+        <div class="cs-stat"><div class="cs-val">4</div><div class="cs-lbl">Senior people in the room</div></div>
+        <div class="cs-stat"><div class="cs-val">Live</div><div class="cs-lbl">Deployed on the day</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="section" style="background:var(--surface);">
+  <div class="container">
+    <div class="section-label">Pricing</div>
+    <h2 style="text-align:center;margin-bottom:0.5rem;">Aligned incentives.</h2>
+    <p style="text-align:center;color:var(--text-muted);margin-bottom:3rem;">Transparent pricing. No day rates. No retainer traps.</p>
+    <div class="pricing-card">
+      <h3>Flat Engagement Fee</h3>
+      <p>One fee covers preparation, the session itself, and post-session documentation. For ongoing partnerships, we offer a core retainer with performance-based upside. We work best with teams who are serious about outcomes — not just exploring options.</p>
+      <div class="pricing-pills">
+        <span class="pill">Half-day session</span>
+        <span class="pill">Up to 4 participants</span>
+        <span class="pill">Deployed asset guaranteed</span>
+        <span class="pill">Full IP ownership</span>
+        <span class="pill">Post-session docs included</span>
+      </div>
+      <a href="#book" class="btn-primary">Get in touch for pricing</a>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK / CONTACT -->
+<section id="book" class="section">
+  <div class="container" style="max-width:640px;">
+    <div class="section-label">Book a Sprint</div>
+    <h2>Ready to build something?</h2>
+    <p class="section-sub">Tell us what you want to walk away with. We'll confirm fit and schedule within 48 hours.</p>
+    <form action="https://formspree.io/f/xpwzagne" method="POST" style="display:flex;flex-direction:column;gap:1rem;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div>
+          <label style="display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:6px;">First Name</label>
+          <input type="text" name="first_name" required style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:10px 12px;color:var(--text);font-size:14px;font-family:inherit;outline:none;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border)'">
+        </div>
+        <div>
+          <label style="display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:6px;">Last Name</label>
+          <input type="text" name="last_name" required style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:10px 12px;color:var(--text);font-size:14px;font-family:inherit;outline:none;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border)'">
+        </div>
+      </div>
+      <div>
+        <label style="display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:6px;">Email</label>
+        <input type="email" name="email" required style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:10px 12px;color:var(--text);font-size:14px;font-family:inherit;outline:none;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border)'">
+      </div>
+      <div>
+        <label style="display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:6px;">Company</label>
+        <input type="text" name="company" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:10px 12px;color:var(--text);font-size:14px;font-family:inherit;outline:none;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border)'">
+      </div>
+      <div>
+        <label style="display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:6px;">What do you want to build?</label>
+        <select name="output_type" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:10px 12px;color:var(--text);font-size:14px;font-family:inherit;outline:none;-webkit-appearance:none;">
+          <option value="">Select an output type...</option>
+          <option>Brand &amp; Website</option>
+          <option>Commercial Strategy</option>
+          <option>Pitch &amp; Investment Deck</option>
+          <option>Product Prototype</option>
+          <option>AI Business Case</option>
+          <option>Team Alignment Workshop</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div>
+        <label style="display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:6px;">Brief (optional)</label>
+        <textarea name="brief" rows="4" placeholder="Tell us what you're working on and what you want to walk away with..." style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:10px 12px;color:var(--text);font-size:14px;font-family:inherit;outline:none;resize:vertical;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="border:none;cursor:pointer;font-family:inherit;text-align:center;">Submit Enquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="container">
+    <h2>Stop planning. Start building.</h2>
+    <p>The AI Sprint isn't a workshop. It's a build session with a guaranteed output. Book yours.</p>
+    <a href="#book" class="btn-dark">Book an AI Sprint</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p style="margin-bottom:0.5rem;">
+      <strong style="color:var(--text);">BridgePoint AI — AI Sprint</strong>
+    </p>
+    <p>A service of <a href="https://www.bridgepointai.io">BridgePoint AI</a> &nbsp;·&nbsp; <a href="https://www.bridgepointai.io#contact">Contact</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
