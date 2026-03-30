@@ -7,7 +7,7 @@
 <meta name="description" content="A structured half-day session where senior expertise meets AI execution. You leave with a deployed website, pitch deck, financial model, or GTM strategy. Built live. In one session.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
@@ -26,9 +26,9 @@
   --green-bg: rgba(22,163,74,0.08);
   --white: #ffffff;
 }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 100px; }
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Instrument Sans', sans-serif;
   background: var(--bg);
   color: var(--text-body);
   line-height: 1.6;
@@ -42,7 +42,7 @@ nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   background: rgba(10,12,16,0.92); backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  height: 64px; display: flex; align-items: center;
+  height: 90px; display: flex; align-items: center;
 }
 .nav-inner {
   display: flex; align-items: center; justify-content: space-between;
@@ -92,7 +92,7 @@ nav {
 @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
 .hero h1 {
   font-family: 'Instrument Sans', sans-serif;
-  font-size: 2.5rem;
+  font-size: 1.875rem;
   font-weight: 700; color: var(--text);
   letter-spacing: -0.03em; line-height: 1.05;
   margin-bottom: 1.5rem;
@@ -104,13 +104,15 @@ nav {
 }
 .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-bottom: 4rem; }
 .btn-primary {
+  font-family: 'Instrument Sans', sans-serif;
   background: var(--gold); color: #0a0c10; font-weight: 700;
   font-size: 15px; padding: 14px 28px; border-radius: 5px;
   letter-spacing: 0.02em; transition: background 0.15s; display: inline-block;
 }
 .btn-primary:hover { background: var(--gold-light); }
 .btn-secondary {
-  color: var(--text-muted); font-size: 14px; font-weight: 500;
+  font-family: 'Instrument Sans', sans-serif;
+  color: var(--text-muted); font-size: 14px; font-weight: 600;
   border: 1px solid var(--border); padding: 14px 24px; border-radius: 5px;
   transition: all 0.15s; display: inline-block;
 }
@@ -129,13 +131,16 @@ nav {
 /* HOW IT WORKS */
 .section { padding: 6rem 0; }
 .section-label {
-  font-size: 11px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.1em; color: var(--gold); margin-bottom: 1rem;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 1rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--gold);
+  padding-left: 1rem; border-left: 2px solid var(--gold);
+  margin-bottom: 1.5rem; display: block;
 }
 .section h2 {
   font-family: 'Instrument Sans', sans-serif;
-  font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 600;
-  color: var(--text); letter-spacing: -0.02em; margin-bottom: 1rem;
+  font-size: 1.875rem; font-weight: 700;
+  color: #ffffff; letter-spacing: -0.015em; margin-bottom: 1rem;
 }
 .section-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 560px; line-height: 1.7; margin-bottom: 3.5rem; }
 
@@ -236,6 +241,23 @@ footer a { color: var(--gold); }
   .steps { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; }
   .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+}
+
+/* ═══ UNIVERSAL CARD TEXT ═══ */
+.step h3, .output-card h3, .deliverable h3, .case-study-card h3,
+.pricing-card h3, h3, h4 {
+  font-family: 'Instrument Sans', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+}
+.step p, .output-card p, .deliverable p, .case-study-card p,
+.pricing-card p {
+  font-family: 'Instrument Sans', sans-serif !important;
+  font-size: 0.875rem !important;
+  font-weight: 400 !important;
+  color: #8a8f9e !important;
+  line-height: 1.65;
 }
 </style>
 </head>
